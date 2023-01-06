@@ -1,0 +1,500 @@
+/* 
+*,*::after,*::before{
+    border:0.1px solid red;
+} */
+*::selection {
+  background-color: #fbf46d;
+  color: var(--black);
+}
+:root {
+  --black: #090e11;
+  --white: #ffffff;
+  /* --black:#ffffff;
+    --white:#090e11; */
+  --green: #074a4d;
+  --num: #ff6767;
+}
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  padding: 10px 10px;
+}
+
+html {
+  cursor: none;
+}
+.cursor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--black);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  backdrop-filter: invert(1);
+  pointer-events: none;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+  transition-property: transform;
+}
+.cursor.large {
+  transform: scale(3);
+}
+.cursor span {
+  color: var(--num);
+  font-size: 0.5rem;
+  position: absolute;
+  left: 20px;
+  top: -2px;
+  line-height: 0.5rem;
+  background: var(--black);
+  padding: 0.1rem;
+  display: none;
+}
+.cursor.visible span {
+  display: block;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: var(--black);
+  font-size: 18px;
+  background-color: var(--white);
+}
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+a:hover,
+a:active {
+  color: var(--num);
+}
+
+ul {
+  list-style-type: none;
+}
+h1 {
+  overflow: hidden;
+  font-size: 4rem;
+  font-weight: 700;
+  padding: 80px 0;
+}
+
+h1.left:after {
+  background-color: var(--black);
+  content: "";
+  display: inline-block;
+  height: 5px;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  left: 0.5em;
+  margin-right: -50%;
+}
+h1.right:before {
+  background-color: var(--black);
+  content: "";
+  display: inline-block;
+  height: 5px;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+h3 {
+  font-size: 2rem;
+}
+h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar {
+  height: 100px;
+}
+.navbar .brand {
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.plate {
+  height: 75px;
+  width: 75px;
+}
+svg {
+  height: 75px;
+  position: absolute;
+  width: 75px;
+}
+.burger {
+  filter: url(#gooeyness);
+}
+.x {
+  transform: scale(0);
+  transition: transform 400ms;
+}
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-origin: 50%;
+  transition: stroke-dasharray 500ms 200ms, stroke-dashoffset 500ms 200ms,
+    transform 500ms 200ms;
+}
+.x .line {
+  stroke-width: 5.5px;
+}
+.active .line {
+  transition: stroke-dasharray 500ms, stroke-dashoffset 500ms, transform 500ms;
+}
+.active .x {
+  transform: scale(1);
+  transition: transform 400ms 350ms;
+}
+.plate2 .line1 {
+  stroke-dasharray: 21 185.62753295898438;
+  transition-delay: 0;
+}
+.plate2 .line2 {
+  stroke-dasharray: 21 178.6514129638672;
+  transition-delay: 30ms;
+}
+.plate2 .line3 {
+  stroke-dasharray: 21 197.92425537109375;
+  transition-delay: 60ms;
+}
+.plate2 .line4 {
+  stroke-dasharray: 21 190.6597137451172;
+  transition-delay: 90ms;
+}
+.plate2 .line5 {
+  stroke-dasharray: 21 208.52874755859375;
+  transition-delay: 120ms;
+}
+.plate2 .line6 {
+  stroke-dasharray: 21 186.59703063964844;
+  transition-delay: 150ms;
+}
+.active.plate2 .line1 {
+  stroke-dasharray: 5 185.62753295898438;
+  stroke-dashoffset: -150px;
+}
+.active.plate2 .line2 {
+  stroke-dasharray: 5 178.6514129638672;
+  stroke-dashoffset: -142px;
+}
+.active.plate2 .line3 {
+  stroke-dasharray: 5 197.92425537109375;
+  stroke-dashoffset: -181px;
+}
+.active.plate2 .line4 {
+  stroke-dasharray: 5 190.6597137451172;
+  stroke-dashoffset: -165px;
+}
+.active.plate2 .line5 {
+  stroke-dasharray: 5 208.52874755859375;
+  stroke-dashoffset: -145px;
+}
+.active.plate2 .line6 {
+  stroke-dasharray: 5 186.59703063964844;
+  stroke-dashoffset: -180px;
+}
+.active.plate2 .x {
+  transition: transform 400ms 250ms;
+}
+
+.menu {
+  background-color: var(--white);
+  height: 80vh;
+  position: absolute;
+  left: 0;
+
+  z-index: 100;
+  color: var(--black);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  display: inline-block;
+  /* display:none; */
+
+  clip-path: circle(0);
+  transition: all 0.6s ease-in-out;
+}
+.menu.active {
+  /* display:inline-block; */
+  clip-path: circle(75%);
+}
+.menu h1 {
+  padding: 10px 0px;
+}
+
+.hero {
+  background-image: url("../img/background.png");
+  background-size: cover;
+  color: var(--white) !important;
+  min-height: 640px;
+}
+.hero .content {
+  color: "#ffffff";
+  padding: 150px 0;
+}
+
+.hero .name::before {
+  content: "Hello, I'm";
+  font-size: 2rem;
+  position: absolute;
+  top: -10px;
+  font-weight: 400;
+}
+.hero .name::after {
+  content: "Designer X Developer";
+  font-size: 2rem;
+  position: absolute;
+  bottom: -10px;
+  left: 495px;
+  font-weight: 400;
+}
+.hero .name {
+  font-size: 7rem;
+  font-weight: 700;
+  position: relative;
+  /* line-height: 7rem; */
+}
+
+.btn {
+  background-color: var(--white);
+  color: var(--green);
+  padding: 20px 15px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  border-radius: 0px;
+  font-weight: 700;
+  margin-right: 1rem;
+}
+.skill-block {
+  display: inline-block;
+}
+
+.skill-block span {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--num);
+  display: inline-block;
+  margin-right: 20px;
+}
+.skill-block span::after {
+  background-color: var(--black);
+  content: "";
+  display: inline-block;
+  height: 5px;
+  position: relative;
+  vertical-align: middle;
+  width: 20px;
+  left: 0.5em;
+  margin-right: -50%;
+}
+.skill-block ul {
+  list-style-type: none;
+  padding-bottom: 0.2rem;
+}
+.project-block {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1.5rem;
+}
+
+.project-block h3 {
+  font-weight: 700;
+  display: inline-block;
+}
+.project-block h3 > span {
+  color: var(--num);
+}
+.project-block .project-block-footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+.project-block .project-block-footer ul > li {
+  display: inline-block;
+  padding: 4px 8px;
+  color: var(--num);
+  border-radius: 13px;
+  margin: 0.3rem 0.1rem;
+  border: 1px solid var(--num);
+  font-size: 0.8rem;
+}
+.project-block .project-btn {
+  color: var(--white);
+  background-color: var(--black);
+  border: none;
+}
+ul.list-view li {
+  margin-bottom: 1.5rem;
+}
+ul.list-view li > .content {
+  border-bottom: 3px solid var(--black);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ul.list-view li > .content h4,
+p {
+  margin-bottom: 0;
+}
+
+.accordion .desc {
+  position: relative;
+  max-height: 0;
+  font-weight: 300;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  padding-top: 1rem;
+}
+.accordion.active .desc {
+  max-height: 200px;
+}
+
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding-bottom: 2rem;
+}
+
+footer input {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: var(--black);
+  border: none;
+  border-bottom: 3px solid var(--white);
+  color: var(--white);
+  padding: 1rem 0;
+}
+footer input:focus:active:visited {
+  border: none;
+  box-shadow: none;
+}
+*:focus {
+  outline: none;
+}
+.copy {
+  color: var(--white);
+  background-color: var(--green);
+  text-align: center;
+  padding: 0.5rem;
+}
+.social {
+  height: 2rem;
+  filter: invert();
+  margin: 0.5rem;
+}
+
+@media only screen and (min-device-width: 576px) and (max-device-width: 992px) {
+  .hero .content .name {
+    line-height: 7rem;
+    margin-bottom: 2rem;
+  }
+  .hero .name::before {
+    font-size: 2rem;
+    top: -68px;
+    font-weight: 400;
+  }
+  .hero .name::after {
+    font-size: 2rem;
+    bottom: -64px;
+    left: 0px;
+    font-weight: 400;
+  }
+}
+
+@media only screen and (max-device-width: 576px) {
+  p {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 3rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  .navbar {
+    height: 60px;
+  }
+  .navbar .brand {
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .menu h1 {
+    padding: 10px 0px;
+    font-size: 2rem;
+  }
+
+  .plate {
+    height: 50px;
+    width: 50px;
+  }
+  svg {
+    height: 50px;
+    position: absolute;
+    width: 50px;
+  }
+
+  footer h3 {
+    font-size: 1rem;
+  }
+
+  .hero .name {
+    font-size: 4rem !important;
+    margin-bottom: 4rem;
+    line-height: 4rem;
+  }
+  .hero .name::before {
+    content: "Hello I'm";
+    font-size: 2rem;
+    position: absolute;
+    top: -61px;
+    font-weight: 400;
+  }
+  .hero .name::after {
+    content: "Designer X Developer";
+    font-size: 2rem;
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    font-weight: 400;
+  }
+  .hero .content .btn {
+    margin-bottom: 2rem;
+  }
+  .aboutme {
+    text-align: center;
+  }
+  .skill ul {
+    padding-left: 4rem;
+  }
+}
+@media only screen and (max-device-width: 424px) {
+  .hero .name {
+    font-size: 4rem !important;
+    margin-bottom: 4rem;
+    line-height: 4rem;
+    margin-bottom: 5rem;
+  }
+  .hero .name::before {
+    font-size: 2rem;
+    top: -61px;
+    font-weight: 400;
+  }
+  .hero .name::after {
+    font-size: 2rem;
+    bottom: -63px;
+    line-height: 2rem;
+    left: 0;
+    font-weight: 400;
+  }
+}
